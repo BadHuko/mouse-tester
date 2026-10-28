@@ -233,3 +233,27 @@ main { flex: 1; min-width: 0; display: flex; flex-direction: column; position: r
 .gp-tile.down .m { color: inherit; }
 .gp-tile .m.bad { color: var(--warn); font-weight: 600; }
 .rate-pill { background: var(--secondary-container); padding: 4px 12px; border-radius: 10px; font-size: 12.5px; font-weight: 600; }
+
+/* gamepad v2 */
+.gp-status { display: block; }
+.gp-top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gp-facts { margin-top: 14px; }
+.gp-facts b { font-size: 15px; }
+.stick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.stick-head h3 { font-size: 15px; font-weight: 600; }
+.badge { padding: 3px 10px; border-radius: 8px; font-size: 12px; font-weight: 600; background: var(--surface-2); color: var(--on-surface-var); }
+.badge.ok { background: var(--ok-container); color: var(--ok); }
+.badge.warn { background: var(--amber-container); color: var(--amber); }
+.badge.bad { background: var(--warn-container); color: var(--warn); }
+.checks { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.checks li { display: grid; grid-template-columns: 22px 1fr auto; gap: 2px 8px; align-items: start; background: var(--surface-2); border-radius: 12px; padding: 8px 10px; }
+.checks .ic { width: 20px; height: 20px; border-radius: 10px; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--outline); color: var(--surface); }
+.checks li.ok .ic { background: var(--ok); } .checks li.warn .ic { background: var(--amber); } .checks li.bad .ic { background: var(--warn); }
+.checks .nm { font-size: 13px; font-weight: 600; }
+.checks .v { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.checks .ds { grid-column: 2 / -1; font-size: 11.5px; color: var(--on-surface-var); line-height: 1.35; }
+.gp-tile.extra { border-style: dashed; border-color: var(--outline); }
+.gp-tile.extra.down { border-color: var(--primary); }
+.axis-bars i { position: relative; }
+.axis-bars u { position: absolute; top: 0; bottom: 0; width: 8px; border-radius: 4px; }
+.axis-bars:empty { display: none; }
