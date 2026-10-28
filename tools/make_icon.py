@@ -17,3 +17,5 @@ d.rounded_rectangle((232, 115, 280, 205), radius=24, fill=(59, 91, 219, 255))
 out = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
 img.save(out, sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
 print("saved", os.path.abspath(out))
+
+img.resize((256, 256), Image.LANCZOS).save(os.path.join(os.path.dirname(__file__), "..", "images", "logo.png"))

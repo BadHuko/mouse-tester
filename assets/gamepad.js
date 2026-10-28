@@ -71,9 +71,13 @@ function parsePad(p) {
   let m = id.match(/Vendor:\s*([0-9a-f]{4})\s*Product:\s*([0-9a-f]{4})/i) || id.match(/^([0-9a-f]{4})-([0-9a-f]{4})-/i);
   const vid = m ? m[1].toLowerCase() : "", pid = m ? m[2].toLowerCase() : "";
   let kind = "gen";
-  if (vid === "054c" || /dualshock|dualsense|playstation|wireless controller/i.test(id)) kind = "ps";
-  else if (vid === "057e" || /nintendo|pro controller|joy-?con/i.test(id)) kind = "nin";
-  else if (vid === "045e" || /xbox|xinput|microsoft/i.test(id)) kind = "xbox";
+  if (vid === "054c") kind = "ps";
+  else if (vid === "045e") kind = "xbox";
+  else if (vid === "057e") kind = "nin";
+  else if (/xbox|xinput|microsoft/i.test(id)) kind = "xbox";
+  else if (/dualshock|dualsense|playstation/i.test(id)) kind = "ps";
+  else if (/nintendo|pro controller|joy-?con/i.test(id)) kind = "nin";
+  else if (/wireless controller/i.test(id)) kind = "ps"; // DualShock 4 reports exactly this name
   const name = id.replace(/\s*\((?:[^()]*(?:STANDARD|Vendor|XInput)[^()]*)\)\s*$/i, "").replace(/^[0-9a-f]{4}-[0-9a-f]{4}-/i, "").trim() || id;
   const model = kind === "ps" && GP_PS_MODELS[pid] ? GP_PS_MODELS[pid] : "";
   return { name, vid, pid, kind, vendor: GP_VENDORS[vid] || "", model };

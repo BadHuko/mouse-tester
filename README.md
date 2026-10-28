@@ -1,42 +1,96 @@
-# 🖱️🎮 Mouse Tester
+<div align="center">
 
-Портативная программа для диагностики мыши с интерфейсом в стиле Material 3.
-Не требует установки — скачал `MouseTester.exe` и запустил.
+<img src="images/logo.png" width="128" alt="Mouse Tester logo" />
 
-*A portable, no-install mouse diagnostic tool with a Material 3 UI. Download `MouseTester.exe` and run it.*
+<h1>Mouse Tester</h1>
 
-## Что умеет / Features
+<p>
+  <a href="README.md"><img src="https://img.shields.io/badge/README-English-8E8E93?style=for-the-badge&labelColor=161618" alt="English README"></a>
+  <a href="README.ru.md"><img src="https://img.shields.io/badge/README-Русский-8E8E93?style=for-the-badge&labelColor=161618" alt="Russian README"></a>
+</p>
 
-| Раздел | Что проверяет |
+<p>
+  <a href="https://github.com/BadHuko/mouse-tester/releases/latest"><img src="https://img.shields.io/github/v/release/BadHuko/mouse-tester?style=for-the-badge&labelColor=161618&color=3b5bdb" alt="Latest release"></a>
+  <a href="https://github.com/BadHuko/mouse-tester/releases"><img src="https://img.shields.io/github/downloads/BadHuko/mouse-tester/total?style=for-the-badge&labelColor=161618&color=3b5bdb" alt="Downloads"></a>
+  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-8E8E93?style=for-the-badge&labelColor=161618" alt="Windows 10/11">
+  <img src="https://img.shields.io/badge/portable-no%20install-8E8E93?style=for-the-badge&labelColor=161618" alt="Portable">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-8E8E93?style=for-the-badge&labelColor=161618" alt="MIT"></a>
+</p>
+
+<p>
+  <a href="https://github.com/BadHuko/mouse-tester/releases/latest/download/MouseTester.exe"><img src="https://img.shields.io/badge/%E2%AC%87%20Download%20MouseTester.exe-3b5bdb?style=for-the-badge&labelColor=3b5bdb" alt="Download MouseTester.exe"></a>
+</p>
+
+<br>
+
+<img src="images/demo.gif" width="820" alt="Mouse Tester demo — buttons, wheel, gamepad">
+
+</div>
+
+<br>
+
+Portable mouse and gamepad tester for Windows with a Material 3 UI. No installer, no admin rights, nothing written to disk: download one `.exe`, run it, delete it when you're done.
+
+Built because a mouse wheel got hard to click but still scrolled fine — is it the switch, the encoder or just dirt? Now there's a way to tell.
+
+## What it tests
+
+| | |
 |---|---|
-| **Кнопки** | Все 5 кнопок (ЛКМ, колесо, ПКМ, «назад», «вперёд»): счётчик, время удержания, **дребезг контактов** (повторное срабатывание < 50 мс) |
-| **Колесо** | Тест клика по колесу (10/20/50 нажатий): засчитано ли каждое нажатие, среднее/мин/макс удержание, двойные срабатывания. Тест прокрутки: тики вверх/вниз, наклоны, **тики в обратную сторону** (грязный/изношенный энкодер) |
-| **Геймпад** | Любой геймпад (Xbox/PlayStation/др.): подсветка всех кнопок со счётчиками и дребезгом, аналоговые триггеры, оба стика с контуром хода, **тест дрейфа стиков**, проверка вибрации, частота опроса |
-| **Частота** | Реальная частота опроса мыши (Гц) с графиком |
-| **Журнал** | Лог всех событий с миллисекундными метками |
+| **Mouse buttons** | All 5 buttons (left, wheel, right, back, forward): press counter, hold time, **contact bounce** (re-press < 50 ms) |
+| **Wheel click** | Click the wheel 10 / 20 / 50 times: is every press registered? Average/min/max hold, double triggers, plain-language verdict |
+| **Scrolling** | Ticks up/down, horizontal tilt, **reverse ticks** — the classic sign of a dirty or worn encoder |
+| **Gamepad** | Xbox / PlayStation / Nintendo / generic: type + vendor detection, every button incl. extra paddles and touchpad, analog triggers, both sticks with a travel outline, **stick drift test**, per-stick health checks, rumble, polling rate |
+| **Polling rate** | Real mouse polling rate in Hz with a live graph |
+| **Event log** | Every event with millisecond timestamps |
 
-Светлая/тёмная тема, русский и английский язык (кнопка в шапке).
+Light / dark theme and English / Russian switch live in the top bar.
 
-### Тугое колесо, но «нормально крутится»?
-Запусти вкладку **Колесо → Клик по колесу**. Если все нажатия засчитываются без двойных срабатываний —
-электроника в порядке, а туго из-за механики (пыль, износ, пружинка). Если есть «дребезг» —
-микропереключатель колеса изношен/грязный.
+## Screenshots
 
-## Скачать
-Готовый `MouseTester.exe` — на вкладке [Releases](../../releases).
-Требуется Windows 10/11 (используется встроенный Edge WebView2). Ничего не пишется на диск — просто удали файл.
+<table>
+  <tr>
+    <td><img src="images/en/buttons.png" alt="Mouse buttons"></td>
+    <td><img src="images/en/wheel.png" alt="Wheel test"></td>
+  </tr>
+  <tr>
+    <td><img src="images/en/gamepad.png" alt="Gamepad test"></td>
+    <td><img src="images/light.png" alt="Light theme"></td>
+  </tr>
+</table>
 
-## Сборка из исходников
+## My wheel is stiff but scrolls fine
+
+Open **Wheel → Wheel click** and press the wheel 10–20 times.
+
+- All presses counted, no double triggers → the electronics are fine; the stiffness is mechanical (dust, worn plastic, spring).
+- **Double triggers** reported → the wheel microswitch is worn or dirty and sometimes counts one click as two. Clean it or replace the switch.
+- **Reverse ticks** while scrolling → the encoder is dirty or worn.
+
+## Download
+
+Grab `MouseTester.exe` from the [latest release](https://github.com/BadHuko/mouse-tester/releases/latest) and run it. Requires Windows 10/11 (uses the built-in Edge WebView2).
+
+Windows SmartScreen may warn about an unknown publisher because the exe isn't code-signed — choose *More info → Run anyway*, or build it yourself (below).
+
+## Build from source
+
+Python 3.10+:
+
 ```bat
-git clone <this repo>
+git clone https://github.com/BadHuko/mouse-tester
 cd mouse-tester
 build.bat
 ```
-Результат: `dist\MouseTester.exe` (один файл ~17 МБ). Нужен Python 3.10+.
-Запуск без сборки: `pip install -r requirements.txt && python main.py`.
 
-## Стек
-Python + [pywebview](https://pywebview.flowrl.com/) (окно), HTML/CSS/JS с собственной реализацией Material 3 (без внешних зависимостей, работает офлайн), PyInstaller (portable exe).
+The result is `dist\MouseTester.exe` (single file, ~17 MB). To run without building: `pip install -r requirements.txt && python main.py`.
 
-## Лицензия
-MIT
+README screenshots and the demo GIF are generated by `tools/make_screens.py` (real mouse input, simulated gamepad).
+
+## Stack
+
+Python + [pywebview](https://pywebview.flowrl.com/) for the window, a hand-made Material 3 UI in plain HTML/CSS/JS (no external dependencies, works offline), PyInstaller for the portable exe, GitHub Actions for releases.
+
+## License
+
+[MIT](LICENSE)
