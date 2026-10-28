@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mouse Tester</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="rail" id="rail">
+    <div class="rail-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9v6c0 3.9 3.1 7 7 7s7-3.1 7-7V9c0-3.9-3.1-7-7-7zm-1 2.1V9H7c0-2.5 1.7-4.4 4-4.9zM12 20c-2.8 0-5-2.2-5-5v-4h10v4c0 2.8-2.2 5-5 5zm1-15.9c2.3.5 4 2.4 4 4.9h-4V4.1z"/></svg>
+    </div>
+    <button class="rail-item active" data-page="buttons">
+      <span class="pill"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v6a7 7 0 0 0 14 0V9a7 7 0 0 0-7-7zm1 2.1A5 5 0 0 1 17 9h-4V4.1zM11 4.1V9H7a5 5 0 0 1 4-4.9z"/></svg></span>
+      <span class="lbl" data-i18n="nav_buttons"></span>
+    </button>
+    <button class="rail-item" data-page="wheel">
+      <span class="pill"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v12a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4zm2 16a2 2 0 0 1-4 0V6a2 2 0 0 1 4 0v12zM12 7a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1z"/></svg></span>
+      <span class="lbl" data-i18n="nav_wheel"></span>
+    </button>
+    <button class="rail-item" data-page="rate">
+      <span class="pill"><svg viewBox="0 0 24 24"><path d="M3 13h2l2-7 4 14 3-10 2 3h5v-2h-3.6l-3.4-5-3 10L7 2 4.6 11H3z"/></svg></span>
+      <span class="lbl" data-i18n="nav_rate"></span>
+    </button>
+    <button class="rail-item" data-page="log">
+      <span class="pill"><svg viewBox="0 0 24 24"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/></svg></span>
+      <span class="lbl" data-i18n="nav_log"></span>
+    </button>
+  </nav>
+
+  <main>
+    <header class="topbar">
+      <h1 id="page-title"></h1>
+      <div class="spacer"></div>
+      <button class="icon-btn" id="btn-lang" title="RU / EN"><span id="lang-label">EN</span></button>
+      <button class="icon-btn" id="btn-theme" data-i18n-title="theme">
+        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-.9-.1-1.4A5.5 5.5 0 0 1 12.4 3.1C12.3 3 12.1 3 12 3z"/></svg>
+      </button>
+      <button class="tonal-btn" id="btn-reset">
+        <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+        <span data-i18n="reset_all"></span>
+      </button>
+    </header>
+
+    <!-- ===================== BUTTONS ===================== -->
+    <section class="page active" id="page-buttons">
+      <div class="grid two">
+        <div class="card mouse-card">
+          <p class="hint" data-i18n="buttons_hint"></p>
+          <svg id="mouse" viewBox="-10 0 220 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="5" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <path class="m-body" d="M100 8C150 8 182 40 182 100V200C182 262 150 294 100 294S18 262 18 200V100C18 40 50 8 100 8Z"/>
+            <path class="m-btn" data-btn="0" d="M97 11C52 13 21 42 20 100v26q0 8 9 8h68z"/>
+            <path class="m-btn" data-btn="2" d="M103 11c45 2 76 31 77 89v26q0 8-9 8h-68z"/>
+            <rect class="m-btn m-wheel" data-btn="1" x="86" y="42" width="28" height="62" rx="14"/>
+            <g class="m-wheel-lines"><path d="M91 58h18M91 68h18M91 78h18M91 88h18"/></g>
+            <path class="m-arrow" id="arr-up" d="M100 20l-9 11h18z"/>
+            <path class="m-arrow" id="arr-down" d="M100 126l-9-11h18z"/>
+            <rect class="m-btn" data-btn="3" x="0" y="150" width="16" height="32" rx="7"/>
+            <rect class="m-btn" data-btn="4" x="0" y="190" width="16" height="32" rx="7"/>
+            <text class="m-label" x="60" y="85">L</text>
+            <text class="m-label" x="140" y="85">R</text>
+          </svg>
+        </div>
+        <div class="btn-list" id="btn-list"></div>
+      </div>
+    </section>
+
+    <!-- ===================== WHEEL ===================== -->
+    <section class="page" id="page-wheel">
+      <div class="grid two">
+        <div class="card">
+          <h2 data-i18n="wc_title"></h2>
+          <p class="sub" data-i18n="wc_sub"></p>
+          <div class="chips" id="wc-targets"></div>
+          <div class="ring-wrap">
+            <svg class="ring" viewBox="0 0 160 160">
+              <circle class="ring-bg" cx="80" cy="80" r="68"/>
+              <circle class="ring-fg" id="ring-fg" cx="80" cy="80" r="68"/>
+            </svg>
+            <div class="ring-text"><b id="wc-count">0</b><span id="wc-of">/ 10</span></div>
+          </div>
+          <div class="row-btns">
+            <button class="filled-btn" id="wc-start" data-i18n="wc_start"></button>
+            <button class="tonal-btn" id="wc-reset" data-i18n="wc_reset"></button>
+          </div>
+          <div class="stats">
+            <div><span data-i18n="st_avg_hold"></span><b id="wc-avg">—</b></div>
+            <div><span data-i18n="st_minmax"></span><b id="wc-minmax">—</b></div>
+            <div><span data-i18n="st_interval"></span><b id="wc-int">—</b></div>
+            <div><span data-i18n="st_bounce"></span><b id="wc-bounce">0</b></div>
+          </div>
+          <div class="verdict" id="wc-verdict" hidden></div>
+        </div>
+
+        <div class="card" id="scroll-card">
+          <h2 data-i18n="sc_title"></h2>
+          <p class="sub" data-i18n="sc_sub"></p>
+          <div class="scroll-zone" id="scroll-zone">
+            <div class="wheel-vis" id="wheel-vis"></div>
+            <div class="scroll-info">
+              <div class="dir" id="sc-dir">·</div>
+              <div class="sub-info" id="sc-delta"></div>
+            </div>
+          </div>
+          <div class="stats four">
+            <div><span data-i18n="sc_up"></span><b id="sc-up">0</b></div>
+            <div><span data-i18n="sc_down"></span><b id="sc-down">0</b></div>
+            <div><span data-i18n="sc_tilt"></span><b id="sc-tilt">0</b></div>
+            <div><span data-i18n="sc_glitch"></span><b id="sc-glitch">0</b></div>
+          </div>
+          <div class="verdict" id="sc-verdict" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RATE ===================== -->
+    <section class="page" id="page-rate">
+      <div class="card">
+        <h2 data-i18n="rt_title"></h2>
+        <p class="sub" data-i18n="rt_sub"></p>
+        <div class="rate-zone" id="rate-zone">
+          <canvas id="rate-canvas"></canvas>
+          <div class="rate-big"><b id="rt-now">0</b><span>Hz</span></div>
+        </div>
+        <div class="stats four">
+          <div><span data-i18n="rt_max"></span><b id="rt-max">0 Hz</b></div>
+          <div><span data-i18n="rt_avg"></span><b id="rt-avg">0 Hz</b></div>
+          <div><span data-i18n="rt_events"></span><b id="rt-events">0</b></div>
+          <div><span data-i18n="rt_pos"></span><b id="rt-pos">—</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOG ===================== -->
+    <section class="page" id="page-log">
+      <div class="card">
+        <div class="log-head">
+          <h2 data-i18n="lg_title"></h2>
+          <button class="tonal-btn" id="log-clear" data-i18n="lg_clear"></button>
+        </div>
+        <div class="log" id="log"></div>
+      </div>
+    </section>
+
+    <div class="snackbar" id="snackbar"></div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
