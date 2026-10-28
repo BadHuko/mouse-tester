@@ -382,6 +382,7 @@ function applyLang() {
   $$("[data-i18n-title]").forEach((el) => (el.title = t(el.dataset.i18nTitle)));
   BTN_IDS.forEach(renderTile);
   renderWheelClick(); renderScroll(); renderLogEmpty();
+  if (typeof gpRefresh === "function") gpRefresh();
   $("#page-title").textContent = t("title_" + page);
 }
 $("#btn-lang").onclick = () => { lang = lang === "ru" ? "en" : "ru"; applyLang(); };
@@ -389,6 +390,7 @@ $("#btn-lang").onclick = () => { lang = lang === "ru" ? "en" : "ru"; applyLang()
 $("#btn-reset").onclick = () => {
   BTN_IDS.forEach((i) => { btn[i] = newBtn(); setVisual(i, false); });
   wcReset(false);
+  if (typeof gpReset === "function") gpReset();
   Object.assign(sc, { up: 0, down: 0, tilt: 0, glitch: 0, lastDir: 0, lastT: -1e9, stamps: [] });
   Object.assign(rt, { stamps: [], max: 0, sum: 0, n: 0, events: 0, hist: [] });
   $("#rt-events").textContent = "0";
